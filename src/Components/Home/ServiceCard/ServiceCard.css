@@ -1,0 +1,19 @@
+.card_parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 20px 40px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.card_parent:hover {
+  box-shadow: 0 1.9px 13.1px rgba(0, 0, 0, 0.155),
+    0 15px 105px rgba(0, 0, 0, 0.31);
+  transform: scale(1.1);
+}
+.icon {
+  height: 100px;
+}
