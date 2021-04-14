@@ -5,9 +5,12 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav
+        style={{ background: "#072F4F" }}
+        class="navbar navbar-expand-lg navbar-light"
+      >
         <div class="container-fluid">
-          <Link class="navbar-brand link_style" href="/">
+          <Link class="navbar-brand link_style text-white" href="/">
             <h5>Daiyan's Auto Repair</h5>
           </Link>
           <button
@@ -24,27 +27,32 @@ const Navbar = () => {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item me-5">
-                <a class="nav-link active" aria-current="page" href="/">
+                <a
+                  style={{ color: "white" }}
+                  class="nav-link active"
+                  aria-current="page"
+                  href="/"
+                >
                   Home
                 </a>
               </li>
               <li class="nav-item me-5">
-                <a class="nav-link" href="/">
+                <a style={{ color: "white" }} class="nav-link" href="/">
                   Our Portfolio
                 </a>
               </li>
               <li class="nav-item me-5">
-                <a class="nav-link" href="/">
+                <a style={{ color: "white" }} class="nav-link" href="/">
                   Our Team
                 </a>
               </li>
               <li class="nav-item me-5">
-                <a class="nav-link" href="/">
+                <a style={{ color: "white" }} class="nav-link" href="/">
                   Contact Us
                 </a>
               </li>
               <li class="nav-item me-5">
-                <a class="nav-link" href="/">
+                <a style={{ color: "white" }} class="nav-link" href="/">
                   Admin
                 </a>
               </li>
