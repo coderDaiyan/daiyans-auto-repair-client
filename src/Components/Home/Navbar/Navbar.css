@@ -1,0 +1,8 @@
+.nav-link:hover {
+  background-color: #0984e3 !important;
+  color: white !important;
+  border-radius: 5px;
+}
+.btn-primary {
+  background-color: #0984e3 !important;
+}
