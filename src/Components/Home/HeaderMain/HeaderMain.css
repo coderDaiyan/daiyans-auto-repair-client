@@ -2,6 +2,7 @@
   background: linear-gradient(0deg, #2d343696, #636e72a4),
     url("../../../assets/header_bg.jpg");
   background-size: cover;
+  background-attachment: fixed;
   height: 600px;
 }
 .buttons {
@@ -22,10 +23,30 @@
   top: 50%;
   left: 50%;
 }
+@media (max-width: 1700px) {
+  .big_text {
+    top: 30%;
+    left: 40%;
+  }
+  .buttons {
+    left: 40%;
+    top: 45%;
+  }
+}
 @media (max-width: 780px) {
   .big_text,
   .buttons {
     left: 40%;
+  }
+}
+@media (max-width: 768px) {
+  .big_text {
+    top: 40%;
+    left: 20%;
+  }
+  .buttons {
+    top: 50%;
+    left: 20%;
   }
 }
 @media (max-width: 600px) {
@@ -38,5 +59,14 @@
   .big_text,
   .buttons {
     left: 20%;
+  }
+}
+@media (max-width: 500px) {
+  .big_text {
+    left: 10%;
+  }
+  .buttons {
+    top: 75%;
+    left: 10%;
   }
 }
