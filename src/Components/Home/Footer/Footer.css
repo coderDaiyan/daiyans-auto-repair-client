@@ -1,0 +1,91 @@
+footer img {
+  height: 500px;
+}
+footer {
+  position: relative;
+}
+footer h3 {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+}
+footer p {
+  position: absolute;
+  top: 60%;
+  left: 30%;
+}
+footer svg {
+  font-size: 40px !important;
+  margin: 0 10px;
+  color: #dfe6e9;
+  cursor: pointer;
+}
+footer #facebook {
+  position: absolute;
+  top: 357px;
+}
+footer #insta {
+  position: absolute;
+  top: 357px;
+  left: 55%;
+}
+footer #twitter {
+  position: absolute;
+  top: 357px;
+  left: 45%;
+}
+.copyright {
+  margin-top: 150px;
+  margin-left: 70px;
+  color: white;
+}
+@media (max-width: 935px) {
+  footer p {
+    margin-left: -40px;
+  }
+  .copyright {
+    margin-left: 0px;
+  }
+  footer #twitter {
+    left: 40%;
+  }
+  footer #insta {
+    left: 60%;
+  }
+}
+@media (max-width: 750px) {
+  footer p {
+    margin-left: -10px;
+  }
+  .copyright {
+    margin-left: 0px;
+  }
+  footer #twitter {
+    left: 40%;
+  }
+  footer #insta {
+    left: 60%;
+  }
+}
+@media (max-width: 750px) {
+  .smal_title {
+    margin-right: 70px;
+  }
+  .copyright {
+    margin-left: -20px;
+  }
+  footer h3 {
+    margin-left: -50px;
+  }
+  footer #twitter {
+    left: 40%;
+    margin-top: 20px;
+  }
+  footer #insta {
+    left: 60%;
+    margin-top: 20px;
+  }
+  footer #facebook {
+    margin-top: 20px;
+  }
+}
