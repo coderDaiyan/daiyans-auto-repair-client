@@ -15,6 +15,14 @@
     0 15px 105px rgba(0, 0, 0, 0.31);
   transform: scale(1.1);
 }
+.card_parent img:hover {
+  animation: spin 4s ease infinite;
+}
 .icon {
   height: 100px;
+}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }

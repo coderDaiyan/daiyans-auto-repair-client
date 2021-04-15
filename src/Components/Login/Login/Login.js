@@ -24,7 +24,6 @@ const Login = () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
-    password: "",
   });
   const [newUser, setNewUser] = useState(false);
 
@@ -40,32 +39,68 @@ const Login = () => {
         // Handle error
       });
   };
+  const [signedInUser, setSignedInUser] = useState({
+    name: "",
+    email: "",
+  });
   const handleGoogleSignIn = () => {
     console.log("fired");
     const provider = new firebase.auth.GoogleAuthProvider();
+    // firebase
+    //   .auth()
+    //   .signInWithPopup(provider)
+    //   .then((res) => {
+    //     const user = res.user;
+    //     console.log(user);
+    //     const newUser = { ...signedInUser };
+    //     newUser.email = user.email;
+    //     newUser.name = user.displayName;
+    //     // signedInUser.name = displayName;
+    //     // signedInUser.email = email;
+    //     setSignedInUser(newUser);
+    //     console.log(signedInUser);
+    //     setLoggedInUser(signedInUser);
+    //     console.log(loggedInUser);
+    //     history.replace(from);
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     console.log(errorCode, errorMessage);
+    //   });
     firebase
       .auth()
       .signInWithPopup(provider)
-      .then((res) => {
-        // ? Sign in successful
-        const { displayName, email } = res.user;
-        const signedInUser = {
-          isSignedIn: true,
-          name: displayName,
-          email: email,
-          password: "",
-        };
-        setUser(signedInUser);
-        setLoggedInUser(signedInUser);
-        setUserToken();
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        const credential = result.credential;
+
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log(user);
+        const newUser = { ...signedInUser };
+        newUser.email = user.email;
+        newUser.name = user?.displayName;
+        setSignedInUser(newUser);
+        setLoggedInUser(newUser);
         history.replace(from);
+        // ...
       })
       .catch((error) => {
         // Handle Errors here.
+        const errorCode = error.code;
         const errorMessage = error.message;
-        setError(errorMessage);
+        // The email of the user's account used.
+        const email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        const credential = error.credential;
+        // ...
       });
   };
+
+  console.log(loggedInUser);
 
   return (
     <>

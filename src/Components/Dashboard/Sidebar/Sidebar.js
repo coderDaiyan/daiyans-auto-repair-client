@@ -1,8 +1,4 @@
-import {
-  faCar,
-  faCommentAlt,
-  faShoppingCart,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCar, faCommentAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./Sidebar.css";
@@ -10,10 +6,10 @@ import "./Sidebar.css";
 const Sidebar = () => {
   return (
     <ul>
-      <li className="sidebar_link">
+      {/* <li className="sidebar_link">
         <FontAwesomeIcon icon={faShoppingCart} />
         Order
-      </li>
+      </li> */}
       <li className="sidebar_link">
         <FontAwesomeIcon icon={faCar} />
         Orders List

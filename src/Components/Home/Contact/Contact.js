@@ -9,54 +9,54 @@ const Contact = () => {
         <h2>Let us Help to Reach You 🙂</h2>
       </div>
       <div className="form">
-        <form onSubmit={(e) => e.preventDefault()} class="row g-3">
-          <div class="col-md-6">
+        <form onSubmit={(e) => e.preventDefault()} className="row g-3">
+          <div className="col-md-6">
             <input
               type="email"
               placeholder="Email"
-              class="form-control"
+              className="form-control"
               id="inputEmail4"
               required
             />
           </div>
-          <div class="col-md-6">
+          <div className="col-md-6">
             <input
               type="text"
               placeholder="Phone Number"
-              class="form-control"
+              className="form-control"
               id="inputPassword4"
               required
             />
           </div>
-          <div class="col-md-6">
+          <div className="col-md-6">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="inputAddress"
               placeholder="First Name"
               required
             />
           </div>
-          <div class="col-md-6">
+          <div className="col-md-6">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="inputAddress"
               placeholder="Last Name"
               required
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <textarea
-              class="form-control"
+              className="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
               required
             ></textarea>
           </div>
 
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary">
+          <div className="col-12">
+            <button type="submit" className="btn btn-primary">
               Sign in
             </button>
           </div>

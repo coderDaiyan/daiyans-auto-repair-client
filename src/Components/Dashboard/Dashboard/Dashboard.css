@@ -1,9 +1,10 @@
 .header {
   height: 100px;
-  background: tomato;
+  color: white;
+  background: #0a304e;
 }
 .sidebar {
   width: 300px;
   height: 600px;
-  background: green;
+  background: #eec620;
 }

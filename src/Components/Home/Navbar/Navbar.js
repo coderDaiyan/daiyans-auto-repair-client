@@ -7,14 +7,14 @@ const Navbar = () => {
     <>
       <nav
         style={{ background: "#072F4F" }}
-        class="navbar navbar-expand-lg navbar-light"
+        className="navbar navbar-expand-lg navbar-light"
       >
-        <div class="container-fluid">
-          <Link class="navbar-brand link_style text-white" href="/">
+        <div className="container-fluid">
+          <Link className="navbar-brand link_style text-white" href="/">
             <h5>Daiyan's Auto Repair</h5>
           </Link>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -22,41 +22,41 @@ const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item me-5">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className="nav-item me-5">
                 <a
                   style={{ color: "white" }}
-                  class="nav-link active"
+                  className="nav-link active"
                   aria-current="page"
                   href="/"
                 >
                   Home
                 </a>
               </li>
-              <li class="nav-item me-5">
-                <a style={{ color: "white" }} class="nav-link" href="/">
+              <li className="nav-item me-5">
+                <a style={{ color: "white" }} className="nav-link" href="/">
                   Our Portfolio
                 </a>
               </li>
-              <li class="nav-item me-5">
-                <a style={{ color: "white" }} class="nav-link" href="/">
+              <li className="nav-item me-5">
+                <a style={{ color: "white" }} className="nav-link" href="/">
                   Our Team
                 </a>
               </li>
-              <li class="nav-item me-5">
-                <a style={{ color: "white" }} class="nav-link" href="/">
+              <li className="nav-item me-5">
+                <a style={{ color: "white" }} className="nav-link" href="/">
                   Contact Us
                 </a>
               </li>
-              <li class="nav-item me-5">
-                <a style={{ color: "white" }} class="nav-link" href="/">
+              <li className="nav-item me-5">
+                <a style={{ color: "white" }} className="nav-link" href="/">
                   Admin
                 </a>
               </li>
-              <li class="nav-item me-5">
+              <li className="nav-item me-5">
                 <button className="btn btn-primary">Login</button>
               </li>
             </ul>
