@@ -1,0 +1,14 @@
+.testimonial_card_parent {
+  width: 300px;
+  margin: 0 20px 30px 20px;
+  border: 1px solid #b2bec3;
+  padding: 20px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.testimonial_card_parent:hover {
+  transform: scale(1.1);
+}
+.people {
+  width: 20%;
+}

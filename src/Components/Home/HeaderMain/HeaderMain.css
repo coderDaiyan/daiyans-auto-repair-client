@@ -4,6 +4,7 @@
   background-size: cover;
   background-attachment: fixed;
   height: 600px;
+  position: relative;
 }
 .buttons {
   position: absolute;
@@ -39,7 +40,7 @@
     left: 40%;
   }
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .big_text {
     top: 40%;
     left: 20%;
@@ -48,7 +49,7 @@
     top: 50%;
     left: 20%;
   }
-}
+} */
 @media (max-width: 600px) {
   .big_text,
   .buttons {
@@ -66,7 +67,7 @@
     left: 10%;
   }
   .buttons {
-    top: 75%;
+    top: 50%;
     left: 10%;
   }
 }
