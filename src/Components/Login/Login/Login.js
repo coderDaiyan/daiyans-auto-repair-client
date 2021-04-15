@@ -6,8 +6,10 @@ import { UserContext } from "../../../App";
 import { firebaseConfig } from "../../../firebase.config";
 import "./Login.css";
 
-if (firebase.apps.length) {
+if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app(); // if already initialized, use that one
 }
 
 const Login = () => {
@@ -25,7 +27,21 @@ const Login = () => {
     password: "",
   });
   const [newUser, setNewUser] = useState(false);
+
+  const setUserToken = () => {
+    firebase
+      .auth()
+      .currentUser.getIdToken(/* forceRefresh */ true)
+      .then(function (idToken) {
+        // Send token to your backend via HTTPS
+        sessionStorage.setItem("token", idToken);
+      })
+      .catch(function (error) {
+        // Handle error
+      });
+  };
   const handleGoogleSignIn = () => {
+    console.log("fired");
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase
       .auth()
@@ -41,6 +57,7 @@ const Login = () => {
         };
         setUser(signedInUser);
         setLoggedInUser(signedInUser);
+        setUserToken();
         history.replace(from);
       })
       .catch((error) => {

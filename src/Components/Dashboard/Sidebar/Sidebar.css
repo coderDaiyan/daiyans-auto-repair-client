@@ -1,0 +1,9 @@
+.sidebar_link svg {
+  margin-right: 10px;
+}
+.sidebar_link {
+  list-style: none;
+  font-size: 20px;
+  padding: 20px 20px 0 20px;
+  color: white;
+}

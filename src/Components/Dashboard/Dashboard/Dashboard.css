@@ -1,0 +1,9 @@
+.header {
+  height: 100px;
+  background: tomato;
+}
+.sidebar {
+  width: 300px;
+  height: 600px;
+  background: green;
+}
