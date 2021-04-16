@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./Components/Dashboard/Dashboard/Dashboard";
 import Order from "./Components/Dashboard/Order/Order";
+import OrderList from "./Components/Dashboard/OrderList/OrderList";
 import Home from "./Components/Home/Home/Home";
 import Login from "./Components/Login/Login/Login";
 import PrivateRoute from "./Components/Login/PrivateRoute/PrivateRoute";
@@ -18,6 +19,9 @@ function App() {
       <OrderDataContext.Provider value={[orderData, setOrderData]}>
         <Router>
           <Switch>
+            <PrivateRoute path="/dashboard/orders">
+              <OrderList />
+            </PrivateRoute>
             <PrivateRoute path="/dashboard/order/:id">
               <Order />
             </PrivateRoute>

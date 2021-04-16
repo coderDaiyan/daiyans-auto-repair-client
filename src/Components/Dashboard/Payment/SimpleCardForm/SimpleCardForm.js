@@ -17,8 +17,6 @@ const SimpleCardForm = ({ order }) => {
   const newOrderData = {
     name: loggedInUser.name,
     email: loggedInUser.email,
-    service: order.service,
-    notes: order.notes,
     status: "pending",
   };
 
@@ -51,10 +49,10 @@ const SimpleCardForm = ({ order }) => {
     ) {
       setPaymentSuccess(paymentMethod.id);
       console.log("paymentSuccess");
-      const newOrder = { ...newOrderData };
+      const newOrder = { ...order };
       newOrder.paymentId = paymentMethod.id;
       setOrderData(newOrder);
-      console.log(orderData);
+      console.log(newOrder);
 
       if (newOrder.paymentId) {
         fetch("http://localhost:5000/placeOrder", {

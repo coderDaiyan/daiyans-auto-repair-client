@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router";
 import { OrderDataContext, UserContext } from "../../../App";
 import DashboardHeader from "../DashboardHeader/DashboardHeader";
 import ProcessPayment from "../Payment/ProcessPayment/ProcessPayment";
@@ -10,8 +11,9 @@ const Order = () => {
   const [orderData, setOrderData] = useContext(OrderDataContext);
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [service, setService] = useState([]);
-  const id = localStorage.getItem("serviceId");
+  // const id = localStorage.getItem("serviceId");
   const [order, setOrder] = useState({});
+  let { id } = useParams();
 
   useEffect(() => {
     fetch("http://localhost:5000/services")
@@ -20,6 +22,7 @@ const Order = () => {
   }, []);
 
   const selectedService = service.find((sv) => sv._id === id);
+  console.log(selectedService);
 
   const {
     register,
@@ -29,12 +32,12 @@ const Order = () => {
   const onSubmit = (data, e) => {
     // console.log(data);
     data.status = "pending";
+    data.service = selectedService.title;
     setOrderData(data);
     setOrder(data);
+    console.log(order);
     e.preventDefault();
   };
-
-  console.log(orderData);
 
   return (
     <section className="dashboard row">

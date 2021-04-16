@@ -8,7 +8,7 @@ const Contact = () => {
         <p>Contact</p>
         <h2>Let us Help to Reach You 🙂</h2>
       </div>
-      <div className="form">
+      <div className="contact_form">
         <form onSubmit={(e) => e.preventDefault()} className="row g-3">
           <div className="col-md-6">
             <input
