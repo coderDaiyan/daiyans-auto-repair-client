@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { OrderDataContext } from "../../../App";
+import { OrderDataContext, UserContext } from "../../../App";
 import DashboardHeader from "../DashboardHeader/DashboardHeader";
 import ProcessPayment from "../Payment/ProcessPayment/ProcessPayment";
 import Sidebar from "../Sidebar/Sidebar";
@@ -8,8 +8,10 @@ import "./Order.css";
 
 const Order = () => {
   const [orderData, setOrderData] = useContext(OrderDataContext);
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [service, setService] = useState([]);
   const id = localStorage.getItem("serviceId");
+  const [order, setOrder] = useState({});
 
   useEffect(() => {
     fetch("http://localhost:5000/services")
@@ -26,10 +28,13 @@ const Order = () => {
   } = useForm();
   const onSubmit = (data, e) => {
     // console.log(data);
+    data.status = "pending";
     setOrderData(data);
-    console.log(orderData);
+    setOrder(data);
     e.preventDefault();
   };
+
+  console.log(orderData);
 
   return (
     <section className="dashboard row">
@@ -50,6 +55,7 @@ const Order = () => {
                   name="name"
                   id="name"
                   placeholder="Your Name"
+                  defaultValue={loggedInUser?.name}
                   {...register("name", { required: true })}
                 />
                 {errors.name && (
@@ -63,6 +69,7 @@ const Order = () => {
                   name="email"
                   id="email"
                   placeholder="Your Email"
+                  defaultValue={loggedInUser?.email}
                   {...register("email", { required: true })}
                 />
                 {errors.email && (
@@ -91,12 +98,13 @@ const Order = () => {
               </div>
               <div className="col-12">
                 <ProcessPayment
+                  order={order}
                   orderData={orderData}
                   setOrderData={setOrderData}
                 />
-                <button type="submit" className="btn btn-primary">
+                {/* <button type="submit" className="btn btn-primary">
                   Submit
-                </button>
+                </button> */}
               </div>
             </form>
           </div>

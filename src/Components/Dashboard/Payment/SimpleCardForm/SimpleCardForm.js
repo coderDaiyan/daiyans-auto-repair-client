@@ -4,7 +4,7 @@ import swal from "sweetalert";
 import { OrderDataContext, UserContext } from "../../../../App";
 import "./SimpleCardForm.css";
 
-const SimpleCardForm = () => {
+const SimpleCardForm = ({ order }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -13,6 +13,14 @@ const SimpleCardForm = () => {
 
   const [paymentError, setPaymentError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(null);
+
+  const newOrderData = {
+    name: loggedInUser.name,
+    email: loggedInUser.email,
+    service: order.service,
+    notes: order.notes,
+    status: "pending",
+  };
 
   const handlePayment = async () => {
     if (!stripe || !elements) {
@@ -43,12 +51,30 @@ const SimpleCardForm = () => {
     ) {
       setPaymentSuccess(paymentMethod.id);
       console.log("paymentSuccess");
-      const newOrderData = { ...orderData };
-      newOrderData.paymentId = paymentMethod.id;
-      newOrderData.email = loggedInUser?.email;
-      setOrderData(newOrderData);
-      console.log(newOrderData);
-      swal("Good job!", "You clicked the button!", "success");
+      const newOrder = { ...newOrderData };
+      newOrder.paymentId = paymentMethod.id;
+      setOrderData(newOrder);
+      console.log(orderData);
+
+      if (newOrder.paymentId) {
+        fetch("http://localhost:5000/placeOrder", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(orderData),
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result) {
+              const newOrderData = { ...orderData };
+              newOrderData.paymentId = paymentMethod.id;
+              newOrderData.email = loggedInUser?.email;
+              // newOrderData.status = "pending";
+              setOrderData(newOrderData);
+              // console.log(newOrderData);
+              swal("YAY!", "You Ordered this Service!", "success");
+            }
+          });
+      }
 
       setPaymentError(null);
     }
@@ -60,7 +86,7 @@ const SimpleCardForm = () => {
         <CardElement />
       </div>
       <button onClick={handlePayment} className="btn btn-primary mb-2">
-        Pay
+        Submit
       </button>
       {paymentError && <p style={{ color: "red" }}>{paymentError}</p>}
       {paymentSuccess && (

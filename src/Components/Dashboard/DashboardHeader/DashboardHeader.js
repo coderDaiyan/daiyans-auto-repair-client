@@ -8,8 +8,8 @@ const DashboardHeader = () => {
     <>
       <Link style={{ textDecoration: "none", color: "inherit" }} to="/">
         <h3 className="mt-4 ms-3 fw-bold">Daiyan's Auto Repair</h3>
-        <div className="right-align">Hello, {loggedInUser?.name}</div>
       </Link>
+      <div className="ms-3">Hello, {loggedInUser?.name}</div>
     </>
   );
 };
