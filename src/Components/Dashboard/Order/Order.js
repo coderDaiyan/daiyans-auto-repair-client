@@ -13,7 +13,6 @@ const Order = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [service, setService] = useState([]);
   // const id = localStorage.getItem("serviceId");
-  const [order, setOrder] = useState({});
   let { id } = useParams();
 
   useEffect(() => {

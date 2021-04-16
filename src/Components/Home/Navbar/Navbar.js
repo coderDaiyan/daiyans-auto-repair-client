@@ -49,23 +49,30 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item me-5">
-                <Link style={{ color: "white" }} className="nav-link" to="/">
-                  Contact Us
+                <Link
+                  style={{ color: "white" }}
+                  className="nav-link"
+                  to="/dashboard/orders"
+                >
+                  Dashboard
                 </Link>
               </li>
-              <li className="nav-item me-5 mt-2">
-                {loggedInUser ? (
+
+              {loggedInUser.email ? (
+                <li className="nav-item me-5 mt-2">
                   <h5 className="text-white">Hello, {loggedInUser.name}</h5>
-                ) : (
+                </li>
+              ) : (
+                <li className="nav-item me-5">
                   <Link
                     style={{ color: "white" }}
                     className="nav-link"
                     to="/login"
                   >
-                    <button className="btn btn-primary">Login</button>
+                    <button className="btn text-white">Login</button>
                   </Link>
-                )}
-              </li>
+                </li>
+              )}
             </ul>
           </div>
         </div>

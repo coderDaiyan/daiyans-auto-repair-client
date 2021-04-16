@@ -1,25 +1,15 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useContext, useState } from "react";
-import { OrderDataContext, UserContext } from "../../../../App";
+import { UserContext } from "../../../../App";
 import "./SimpleCardForm.css";
 
 const SimpleCardForm = ({ handlePaymentSuccess }) => {
   const stripe = useStripe();
   const elements = useElements();
-
-  const [orderData, setOrderData] = useContext(OrderDataContext);
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
   const [paymentError, setPaymentError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(null);
-
-  const [paymentData, setPaymentData] = useState({ paymentId: "" });
-
-  const newOrderData = {
-    name: loggedInUser.name,
-    email: loggedInUser.email,
-    status: "pending",
-  };
 
   const handlePayment = async () => {
     if (!stripe || !elements) {
@@ -45,14 +35,6 @@ const SimpleCardForm = ({ handlePaymentSuccess }) => {
     } else {
       setPaymentSuccess(paymentMethod.id);
       console.log("paymentSuccess");
-      // const newOrder = { ...paymentData };
-      // // const newOrder = { ...orderData };
-      // newOrder.paymentId = paymentMethod.id;
-      // setOrderData(newOrder);
-      // console.log(orderData);
-      // setPaymentData(newOrder);
-      // // console.log(paymentData);
-      // // console.log(newOrder);
       handlePaymentSuccess(paymentMethod.id);
 
       setPaymentError(null);
