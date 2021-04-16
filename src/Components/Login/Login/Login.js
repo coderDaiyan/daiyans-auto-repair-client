@@ -46,28 +46,6 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     console.log("fired");
     const provider = new firebase.auth.GoogleAuthProvider();
-    // firebase
-    //   .auth()
-    //   .signInWithPopup(provider)
-    //   .then((res) => {
-    //     const user = res.user;
-    //     console.log(user);
-    //     const newUser = { ...signedInUser };
-    //     newUser.email = user.email;
-    //     newUser.name = user.displayName;
-    //     // signedInUser.name = displayName;
-    //     // signedInUser.email = email;
-    //     setSignedInUser(newUser);
-    //     console.log(signedInUser);
-    //     setLoggedInUser(signedInUser);
-    //     console.log(loggedInUser);
-    //     history.replace(from);
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     console.log(errorCode, errorMessage);
-    //   });
     firebase
       .auth()
       .signInWithPopup(provider)
