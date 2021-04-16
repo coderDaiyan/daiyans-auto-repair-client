@@ -4,6 +4,7 @@ import "./App.css";
 import Dashboard from "./Components/Dashboard/Dashboard/Dashboard";
 import Order from "./Components/Dashboard/Order/Order";
 import OrderList from "./Components/Dashboard/OrderList/OrderList";
+import Review from "./Components/Dashboard/Review/Review";
 import Home from "./Components/Home/Home/Home";
 import Login from "./Components/Login/Login/Login";
 import PrivateRoute from "./Components/Login/PrivateRoute/PrivateRoute";
@@ -19,6 +20,9 @@ function App() {
       <OrderDataContext.Provider value={[orderData, setOrderData]}>
         <Router>
           <Switch>
+            <PrivateRoute path="/dashboard/review">
+              <Review />
+            </PrivateRoute>
             <PrivateRoute path="/dashboard/orders">
               <OrderList />
             </PrivateRoute>

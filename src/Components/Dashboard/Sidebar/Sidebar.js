@@ -17,10 +17,12 @@ const Sidebar = () => {
           Orders List
         </li>
       </Link>
-      <li className="sidebar_link">
-        <FontAwesomeIcon icon={faCommentAlt} />
-        Review
-      </li>
+      <Link to="/dashboard/review">
+        <li className="sidebar_link">
+          <FontAwesomeIcon icon={faCommentAlt} />
+          Review
+        </li>
+      </Link>
     </ul>
   );
 };
