@@ -14,7 +14,14 @@ export const OrderDataContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
-  const [orderData, setOrderData] = useState({});
+  const [orderData, setOrderData] = useState({
+    paymentId: "",
+    name: "",
+    email: "",
+    service: "",
+    notes: "",
+    status: "",
+  });
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <OrderDataContext.Provider value={[orderData, setOrderData]}>

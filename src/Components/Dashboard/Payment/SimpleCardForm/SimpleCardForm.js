@@ -1,10 +1,9 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useContext, useState } from "react";
-import swal from "sweetalert";
 import { OrderDataContext, UserContext } from "../../../../App";
 import "./SimpleCardForm.css";
 
-const SimpleCardForm = ({ order }) => {
+const SimpleCardForm = ({ handlePaymentSuccess }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -13,6 +12,8 @@ const SimpleCardForm = ({ order }) => {
 
   const [paymentError, setPaymentError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(null);
+
+  const [paymentData, setPaymentData] = useState({ paymentId: "" });
 
   const newOrderData = {
     name: loggedInUser.name,
@@ -41,38 +42,18 @@ const SimpleCardForm = ({ order }) => {
     if (error) {
       setPaymentError(error.message);
       setPaymentSuccess(null);
-    } else if (
-      !error &&
-      orderData.email &&
-      orderData.name &&
-      orderData.service !== ""
-    ) {
+    } else {
       setPaymentSuccess(paymentMethod.id);
       console.log("paymentSuccess");
-      const newOrder = { ...order };
-      newOrder.paymentId = paymentMethod.id;
-      setOrderData(newOrder);
-      console.log(newOrder);
-
-      if (newOrder.paymentId) {
-        fetch("http://localhost:5000/placeOrder", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(orderData),
-        })
-          .then((res) => res.json())
-          .then((result) => {
-            if (result) {
-              const newOrderData = { ...orderData };
-              newOrderData.paymentId = paymentMethod.id;
-              newOrderData.email = loggedInUser?.email;
-              // newOrderData.status = "pending";
-              setOrderData(newOrderData);
-              // console.log(newOrderData);
-              swal("YAY!", "You Ordered this Service!", "success");
-            }
-          });
-      }
+      // const newOrder = { ...paymentData };
+      // // const newOrder = { ...orderData };
+      // newOrder.paymentId = paymentMethod.id;
+      // setOrderData(newOrder);
+      // console.log(orderData);
+      // setPaymentData(newOrder);
+      // // console.log(paymentData);
+      // // console.log(newOrder);
+      handlePaymentSuccess(paymentMethod.id);
 
       setPaymentError(null);
     }
@@ -84,7 +65,7 @@ const SimpleCardForm = ({ order }) => {
         <CardElement />
       </div>
       <button onClick={handlePayment} className="btn btn-primary mb-2">
-        Submit
+        Pay
       </button>
       {paymentError && <p style={{ color: "red" }}>{paymentError}</p>}
       {paymentSuccess && (

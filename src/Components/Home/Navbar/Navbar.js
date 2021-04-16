@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../../App";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   return (
     <>
       <nav
@@ -10,7 +12,7 @@ const Navbar = () => {
         className="navbar navbar-expand-lg navbar-light"
       >
         <div className="container-fluid">
-          <Link className="navbar-brand link_style text-white" href="/">
+          <Link className="navbar-brand link_style text-white" to="/">
             <h5>Daiyan's Auto Repair</h5>
           </Link>
           <button
@@ -27,37 +29,42 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item me-5">
-                <a
+                <Link
                   style={{ color: "white" }}
                   className="nav-link active"
                   aria-current="page"
-                  href="/"
+                  to="/"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item me-5">
-                <a style={{ color: "white" }} className="nav-link" href="/">
+                <Link style={{ color: "white" }} className="nav-link" to="/">
                   Our Portfolio
-                </a>
+                </Link>
               </li>
               <li className="nav-item me-5">
-                <a style={{ color: "white" }} className="nav-link" href="/">
+                <Link style={{ color: "white" }} className="nav-link" to="/">
                   Our Team
-                </a>
+                </Link>
               </li>
               <li className="nav-item me-5">
-                <a style={{ color: "white" }} className="nav-link" href="/">
+                <Link style={{ color: "white" }} className="nav-link" to="/">
                   Contact Us
-                </a>
+                </Link>
               </li>
-              <li className="nav-item me-5">
-                <a style={{ color: "white" }} className="nav-link" href="/">
-                  Admin
-                </a>
-              </li>
-              <li className="nav-item me-5">
-                <button className="btn btn-primary">Login</button>
+              <li className="nav-item me-5 mt-2">
+                {loggedInUser ? (
+                  <h5 className="text-white">Hello, {loggedInUser.name}</h5>
+                ) : (
+                  <Link
+                    style={{ color: "white" }}
+                    className="nav-link"
+                    to="/login"
+                  >
+                    <button className="btn btn-primary">Login</button>
+                  </Link>
+                )}
               </li>
             </ul>
           </div>

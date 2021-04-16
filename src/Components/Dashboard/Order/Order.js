@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
-import { OrderDataContext, UserContext } from "../../../App";
+import swal from "sweetalert";
+import { UserContext } from "../../../App";
 import DashboardHeader from "../DashboardHeader/DashboardHeader";
 import ProcessPayment from "../Payment/ProcessPayment/ProcessPayment";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Order.css";
 
 const Order = () => {
-  const [orderData, setOrderData] = useContext(OrderDataContext);
+  const [orderData, setOrderData] = useState(null);
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [service, setService] = useState([]);
   // const id = localStorage.getItem("serviceId");
@@ -22,7 +23,6 @@ const Order = () => {
   }, []);
 
   const selectedService = service.find((sv) => sv._id === id);
-  console.log(selectedService);
 
   const {
     register,
@@ -30,13 +30,28 @@ const Order = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data, e) => {
-    // console.log(data);
-    data.status = "pending";
-    data.service = selectedService.title;
     setOrderData(data);
-    setOrder(data);
-    console.log(order);
     e.preventDefault();
+  };
+
+  const handlePaymentSuccess = (paymentId) => {
+    const orderDetails = {
+      ...loggedInUser,
+      orderData,
+      paymentId,
+    };
+
+    fetch("http://localhost:5000/placeOrder", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(orderDetails),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          swal("YAY!", "You Ordered this Service!", "success");
+        }
+      });
   };
 
   return (
@@ -50,7 +65,11 @@ const Order = () => {
         </div>
         <div className="main_content col-md-9">
           <div className="row form">
-            <form onSubmit={handleSubmit(onSubmit)} className="row g-3">
+            <form
+              style={{ display: orderData ? "none" : "block" }}
+              onSubmit={handleSubmit(onSubmit)}
+              className="row g-3"
+            >
               <div className="col-md-6">
                 <input
                   type="text"
@@ -100,16 +119,17 @@ const Order = () => {
                 ></textarea>
               </div>
               <div className="col-12">
-                <ProcessPayment
-                  order={order}
-                  orderData={orderData}
-                  setOrderData={setOrderData}
-                />
-                {/* <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary">
                   Submit
-                </button> */}
+                </button>
               </div>
             </form>
+          </div>
+          <div
+            style={{ display: orderData ? "block" : "none", padding: "20px" }}
+            className="col-12"
+          >
+            <ProcessPayment handlePaymentSuccess={handlePaymentSuccess} />
           </div>
         </div>
       </div>

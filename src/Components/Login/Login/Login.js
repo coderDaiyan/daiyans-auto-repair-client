@@ -44,7 +44,6 @@ const Login = () => {
     email: "",
   });
   const handleGoogleSignIn = () => {
-    console.log("fired");
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase
       .auth()
@@ -57,7 +56,6 @@ const Login = () => {
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-        console.log(user);
         const newUser = { ...signedInUser };
         newUser.email = user.email;
         newUser.name = user?.displayName;
@@ -77,8 +75,6 @@ const Login = () => {
         // ...
       });
   };
-
-  console.log(loggedInUser);
 
   return (
     <>
