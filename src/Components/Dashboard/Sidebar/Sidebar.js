@@ -13,19 +13,17 @@ import "./Sidebar.css";
 
 const Sidebar = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  const [selectedAdmin, setSelectedAdmin] = useState({});
+  const [admins, setAdmins] = useState({});
 
   useEffect(() => {
     fetch("http://localhost:5000/admins")
       .then((res) => res.json())
-      .then((admin) => setSelectedAdmin(admin));
+      .then((admin) => setAdmins(admin));
   }, []);
 
   let mainAdmin;
-  if (selectedAdmin.length > 0) {
-    mainAdmin = selectedAdmin.find(
-      (admin) => admin?.email === loggedInUser?.email
-    );
+  if (admins.length > 0) {
+    mainAdmin = admins.find((admin) => admin?.email === loggedInUser?.email);
   }
   console.log(mainAdmin);
   return (

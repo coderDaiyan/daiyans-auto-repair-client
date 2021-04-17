@@ -1,3 +1,5 @@
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import swal from "sweetalert";
 import DashboardHeader from "../../Dashboard/DashboardHeader/DashboardHeader";

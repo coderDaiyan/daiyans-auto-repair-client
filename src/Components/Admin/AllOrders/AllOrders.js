@@ -64,9 +64,27 @@ const AllOrders = () => {
                       onChange={(e) => changeStatus(order._id, e)}
                       className="form-select"
                     >
-                      <option value="Pending">Pending</option>
-                      <option value="Done">Done</option>
-                      <option value="Rejected">Rejected</option>
+                      <option
+                        selected={order.status === "Pending" ? true : false}
+                        value="Pending"
+                        className="text-warning"
+                      >
+                        Pending
+                      </option>
+                      <option
+                        selected={order.status === "Done" ? true : false}
+                        value="Done"
+                        className="text-success"
+                      >
+                        Done
+                      </option>
+                      <option
+                        selected={order.status === "Rejected" ? true : false}
+                        value="Rejected"
+                        className="text-danger"
+                      >
+                        Rejected
+                      </option>
                     </select>
                   </td>
                 </tr>
