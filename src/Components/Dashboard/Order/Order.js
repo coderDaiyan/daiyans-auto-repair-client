@@ -66,7 +66,7 @@ const Order = () => {
         <div className="main_content col-md-9">
           <div className="row form">
             <form
-              style={{ display: orderData ? "none" : "block" }}
+              // style={{ display: orderData ? "none" : "block" }}
               onSubmit={handleSubmit(onSubmit)}
               className="row g-3"
             >
