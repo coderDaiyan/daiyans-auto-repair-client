@@ -1,0 +1,7 @@
+.img {
+  filter: grayscale(1);
+  transition: all 0.2s ease;
+}
+.img:hover {
+  filter: none;
+}

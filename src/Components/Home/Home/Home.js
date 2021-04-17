@@ -1,10 +1,10 @@
 import React from "react";
+import About from "../About/About";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Services from "../Services/Services";
 import Testimonial from "../Testimonial/Testimonial";
-import Works from "../Works/Works";
 
 const Home = () => {
   return (
@@ -12,7 +12,7 @@ const Home = () => {
       <Header />
       <Services />
       <Testimonial />
-      <Works />
+      <About />
       <Contact />
       <Footer />
     </>
