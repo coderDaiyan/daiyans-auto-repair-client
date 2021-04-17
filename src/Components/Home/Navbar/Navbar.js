@@ -52,7 +52,7 @@ const Navbar = () => {
                 <Link
                   style={{ color: "white" }}
                   className="nav-link"
-                  to="/dashboard/orders"
+                  to="/dashboard"
                 >
                   Dashboard
                 </Link>

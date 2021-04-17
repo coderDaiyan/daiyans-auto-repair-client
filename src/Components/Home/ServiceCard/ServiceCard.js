@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../../App";
 import "./ServiceCard.css";
 
 const ServiceCard = ({ service }) => {
   const { icon, title, description } = service;
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
   const handleClick = () => {
     localStorage.setItem("serviceId", service._id);
@@ -12,7 +14,11 @@ const ServiceCard = ({ service }) => {
     <>
       <Link
         style={{ textDecoration: "none", color: "inherit" }}
-        to={`/dashboard/order/${service._id}`}
+        to={
+          loggedInUser.isAdmin
+            ? `/dashboard/manageServices`
+            : `/dashboard/order/${service._id}`
+        }
         onClick={handleClick}
         className="card_parent col-md-3"
       >

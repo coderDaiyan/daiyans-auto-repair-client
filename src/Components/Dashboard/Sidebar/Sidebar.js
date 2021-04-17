@@ -6,29 +6,16 @@ import {
   faUserShield,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../App";
 import "./Sidebar.css";
 
 const Sidebar = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  const [admins, setAdmins] = useState({});
-
-  useEffect(() => {
-    fetch("http://localhost:5000/admins")
-      .then((res) => res.json())
-      .then((admin) => setAdmins(admin));
-  }, []);
-
-  let mainAdmin;
-  if (admins.length > 0) {
-    mainAdmin = admins.find((admin) => admin?.email === loggedInUser?.email);
-  }
-  console.log(mainAdmin);
   return (
     <ul>
-      {!mainAdmin && (
+      {!loggedInUser.isAdmin && (
         <>
           {" "}
           <Link to="/dashboard/orders">
@@ -45,7 +32,7 @@ const Sidebar = () => {
           </Link>{" "}
         </>
       )}
-      {mainAdmin && (
+      {loggedInUser.isAdmin && (
         <>
           {" "}
           <Link to="/dashboard/makeAdmin">

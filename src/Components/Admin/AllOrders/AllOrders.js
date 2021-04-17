@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
+import PreLoader from "../../../assets/preloader.gif";
 import DashboardHeader from "../../Dashboard/DashboardHeader/DashboardHeader";
 import Sidebar from "../../Dashboard/Sidebar/Sidebar";
 import "./AllOrders.css";
@@ -52,44 +53,56 @@ const AllOrders = () => {
                 <th scope="col">Status</th>
               </tr>
             </thead>
-            <tbody>
-              {orders.map((order) => (
-                <tr>
-                  <td>{order.name}</td>
-                  <td>{order.email}</td>
-                  <td>{order.orderData.service}</td>
-                  <td>
-                    <select
-                      id="select_options"
-                      onChange={(e) => changeStatus(order._id, e)}
-                      className="form-select"
-                    >
-                      <option
-                        selected={order.status === "Pending" ? true : false}
-                        value="Pending"
-                        className="text-warning"
+            {orders.length !== 0 ? (
+              <tbody>
+                {orders.map((order) => (
+                  <tr>
+                    <td>{order.name}</td>
+                    <td>{order.email}</td>
+                    <td>{order.orderData.service}</td>
+                    <td>
+                      <select
+                        id="select_options"
+                        onChange={(e) => changeStatus(order._id, e)}
+                        className="form-select"
                       >
-                        Pending
-                      </option>
-                      <option
-                        selected={order.status === "Done" ? true : false}
-                        value="Done"
-                        className="text-success"
-                      >
-                        Done
-                      </option>
-                      <option
-                        selected={order.status === "Rejected" ? true : false}
-                        value="Rejected"
-                        className="text-danger"
-                      >
-                        Rejected
-                      </option>
-                    </select>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+                        <option
+                          selected={order.status === "Pending" ? true : false}
+                          value="Pending"
+                          className="text-warning"
+                        >
+                          Pending
+                        </option>
+                        <option
+                          selected={order.status === "Done" ? true : false}
+                          value="Done"
+                          className="text-success"
+                        >
+                          Done
+                        </option>
+                        <option
+                          selected={order.status === "Rejected" ? true : false}
+                          value="Rejected"
+                          className="text-danger"
+                        >
+                          Rejected
+                        </option>
+                      </select>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            ) : (
+              <img
+                style={{
+                  marginTop: "-150px",
+                  marginLeft: "-50px",
+                }}
+                className="text-center"
+                src={PreLoader}
+                alt="loading..."
+              />
+            )}
           </table>
         </div>
       </div>

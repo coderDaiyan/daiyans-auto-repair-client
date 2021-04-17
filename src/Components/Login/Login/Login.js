@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../../../App";
 import { firebaseConfig } from "../../../firebase.config";
@@ -19,6 +19,14 @@ const Login = () => {
   let { from } = location.state || {
     from: { pathname: `/` },
   };
+
+  const [admins, setAdmins] = useState({});
+
+  useEffect(() => {
+    fetch("http://localhost:5000/admins")
+      .then((res) => res.json())
+      .then((admin) => setAdmins(admin));
+  }, []);
 
   const [error, setError] = useState("");
   const [user, setUser] = useState({
@@ -42,6 +50,7 @@ const Login = () => {
   const [signedInUser, setSignedInUser] = useState({
     name: "",
     email: "",
+    isAdmin: false,
   });
   const handleGoogleSignIn = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -61,6 +70,12 @@ const Login = () => {
         newUser.name = user?.displayName;
         setSignedInUser(newUser);
         setLoggedInUser(newUser);
+        const checkAdmin = admins.find((admin) => admin.email == user.email);
+        if (checkAdmin) {
+          newUser.isAdmin = true;
+          setLoggedInUser(newUser);
+        }
+
         history.replace(from);
         // ...
       })
@@ -68,6 +83,7 @@ const Login = () => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
         // The email of the user's account used.
         const email = error.email;
         // The firebase.auth.AuthCredential type that was used.

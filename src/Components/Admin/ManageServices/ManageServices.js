@@ -1,16 +1,19 @@
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import swal from "sweetalert";
+import PreLoader from "../../../assets/preloader.gif";
 import DashboardHeader from "../../Dashboard/DashboardHeader/DashboardHeader";
 import Sidebar from "../../Dashboard/Sidebar/Sidebar";
 
 const ManageServices = () => {
   const [services, setServices] = useState([]);
 
-  fetch("http://localhost:5000/services")
-    .then((res) => res.json())
-    .then((data) => setServices(data));
+  useEffect(() => {
+    fetch("http://localhost:5000/services")
+      .then((res) => res.json())
+      .then((data) => setServices(data));
+  }, []);
 
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/delete/${id}`, {
@@ -46,22 +49,34 @@ const ManageServices = () => {
                   <th scope="col">Action</th>
                 </tr>
               </thead>
-              <tbody>
-                {services.map((service) => (
-                  <tr>
-                    <td>{service.title}</td>
-                    <td>${service.price}</td>
-                    <td>
-                      <button
-                        onClick={() => handleDelete(`${service._id}`)}
-                        className="btn btn-danger"
-                      >
-                        <FontAwesomeIcon icon={faTrashAlt} />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
+              {services.length !== 0 ? (
+                <tbody>
+                  {services.map((service) => (
+                    <tr>
+                      <td>{service.title}</td>
+                      <td>${service.price}</td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(`${service._id}`)}
+                          className="btn btn-danger"
+                        >
+                          <FontAwesomeIcon icon={faTrashAlt} />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              ) : (
+                <img
+                  style={{
+                    marginTop: "-150px",
+                    marginLeft: "-50px",
+                  }}
+                  className="text-center"
+                  src={PreLoader}
+                  alt="loading..."
+                />
+              )}
             </table>
           </div>
         </div>
