@@ -4,7 +4,7 @@ import "./TestimonialCard.css";
 const TestimonialCard = ({ testimonial }) => {
   const { img, name, company, review } = testimonial;
   return (
-    <div className="testimonial_card_parent col-md-3">
+    <div className="testimonial_card_parent container col-md-3">
       <div className="identity d-flex mb-3">
         <img className="people me-3" src={img} alt="" />
         <div className="mt-4">

@@ -11,7 +11,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer>
-      <div className="text-center text-white">
+      <div className="text-center text-white container">
         <h3>Daiyan's Auto Repair</h3>
         <p className="smal_title">
           Need a special repair service? We are happy to fulfil every request.

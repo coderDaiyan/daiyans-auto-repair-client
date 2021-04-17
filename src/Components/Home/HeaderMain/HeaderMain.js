@@ -3,7 +3,7 @@ import "./HeaderMain.css";
 
 const HeaderMain = () => {
   return (
-    <section className="main_header">
+    <section className="main_header container-fluid">
       <div className="content">
         <h1 className="text-uppercase fw-bold d-inline big_text text-white">
           Caring for Your Car <br /> The Way You Could

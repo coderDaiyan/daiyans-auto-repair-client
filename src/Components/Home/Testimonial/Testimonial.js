@@ -12,7 +12,7 @@ const Testimonial = () => {
   }, []);
 
   return (
-    <section className="testimonial_section mt-5">
+    <section className="testimonial_section mt-5 container">
       <h1 className="fw-bold text-center mb-5">Testimonials</h1>
       <div className="row d-flex justify-content-center align-items-center">
         <div className="row justify-content-center works-slider">

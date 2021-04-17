@@ -11,6 +11,7 @@ import Review from "./Components/Dashboard/Review/Review";
 import Home from "./Components/Home/Home/Home";
 import Login from "./Components/Login/Login/Login";
 import PrivateRoute from "./Components/Login/PrivateRoute/PrivateRoute";
+import NotFound from "./Components/NotFound/NotFound";
 
 export const UserContext = createContext();
 
@@ -46,6 +47,9 @@ function App() {
           </PrivateRoute>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </Router>

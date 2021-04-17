@@ -38,6 +38,7 @@ const Order = () => {
       ...loggedInUser,
       orderData,
       paymentId,
+      status: "pending",
     };
 
     fetch("http://localhost:5000/placeOrder", {
@@ -104,7 +105,8 @@ const Order = () => {
                   name="service"
                   id="service"
                   placeholder={selectedService?.title}
-                  {...register("service", { required: true })}
+                  required
+                  {...register("service")}
                 />
               </div>
               <div className="mb-3">

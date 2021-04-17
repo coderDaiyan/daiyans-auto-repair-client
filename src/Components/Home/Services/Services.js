@@ -11,7 +11,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section className="mt-5">
+    <section className="mt-5 container-fluid">
       <h1 className="text-center">Our Services</h1>
       <div
         style={{ width: "99vw" }}
