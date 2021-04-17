@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import Swiper core and required components
 import SwiperCore, { A11y, Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,44 +11,18 @@ import "./Works.css";
 SwiperCore.use([Pagination, Autoplay, A11y]);
 
 const Works = () => {
-  // const sliderImgs = [Img1, Img2, Img3, Img4, Img5];
-  const sliderImgs = [
-    {
-      img: "https://i.ibb.co/BL68Bcx/img-1.jpg",
-    },
-    {
-      img: "https://i.ibb.co/w0tXdSS/img-2.jpg",
-    },
-    {
-      img: "https://i.ibb.co/RgTKn8P/img-3.jpg",
-    },
-    {
-      img: "https://i.ibb.co/d583Gkg/img-4.jpg",
-    },
-    {
-      img: "https://i.ibb.co/7tMQX6M/img-5.jpg",
-    },
-  ];
+  const [sliderImg, setSliderImg] = useState([]);
 
-  const handleImage = () => {
-    fetch("http://localhost:5000/addSliders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(sliderImgs),
-    })
+  useEffect(() => {
+    fetch("http://localhost:5000/sliders")
       .then((res) => res.json())
-      .then((result) => {
-        if (result) {
-          alert("inserted");
-        }
+      .then((slider) => {
+        setSliderImg(slider);
       });
-  };
+  });
   return (
     <section className="container-fluid works_section mt-5" id="works">
       <div className="">
-        <button onClick={handleImage} className="btn">
-          Add Product
-        </button>
         <h1 className="works-title text-center text-white">Our Works</h1>
         <div className="row justify-content-center works-slider">
           <Swiper
@@ -60,9 +34,9 @@ const Works = () => {
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}
           >
-            {sliderImgs.map((slider) => (
+            {sliderImg.map((slider) => (
               <SwiperSlide style={{ background: "#072F4F" }}>
-                <img src={slider} alt="" />
+                <img src={slider.img} alt="" />
               </SwiperSlide>
             ))}
           </Swiper>
