@@ -51,16 +51,16 @@ const Sidebar = () => {
               Make Admin
             </li>
           </Link>
-          <Link to="/dashboard/makeAdmin">
+          <Link to="/dashboard/addService">
             <li className="sidebar_link">
               <FontAwesomeIcon icon={faPlus} />
               Add Service
             </li>
           </Link>
-          <Link to="/dashboard/makeAdmin">
+          <Link to="/dashboard/allOrders">
             <li className="sidebar_link">
               <FontAwesomeIcon icon={faThList} />
-              Order List
+              All Orders
             </li>
           </Link>{" "}
         </>
