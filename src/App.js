@@ -4,6 +4,7 @@ import "./App.css";
 import AddService from "./Components/Admin/AddService/AddService";
 import AllOrders from "./Components/Admin/AllOrders/AllOrders";
 import MakeAdmin from "./Components/Admin/MakeAdmin/MakeAdmin";
+import ManageServices from "./Components/Admin/ManageServices/ManageServices";
 import Dashboard from "./Components/Dashboard/Dashboard/Dashboard";
 import Order from "./Components/Dashboard/Order/Order";
 import OrderList from "./Components/Dashboard/OrderList/OrderList";
@@ -21,6 +22,9 @@ function App() {
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <Switch>
+          <PrivateRoute path="/dashboard/manageServices">
+            <ManageServices />
+          </PrivateRoute>
           <PrivateRoute path="/dashboard/addService">
             <AddService />
           </PrivateRoute>

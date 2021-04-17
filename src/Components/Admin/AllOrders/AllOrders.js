@@ -53,16 +53,6 @@ const AllOrders = () => {
               </tr>
             </thead>
             <tbody>
-              {/* <tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>
-                  <select className="form-select w-75" name="" id="">
-                    <option value="Pending">Pending</option>
-                  </select>
-                </td>
-              </tr> */}
               {orders.map((order) => (
                 <tr>
                   <td>{order.name}</td>

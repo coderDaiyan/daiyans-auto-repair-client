@@ -30,18 +30,23 @@ const Sidebar = () => {
   console.log(mainAdmin);
   return (
     <ul>
-      <Link to="/dashboard/orders">
-        <li className="sidebar_link">
-          <FontAwesomeIcon icon={faCar} />
-          Orders List
-        </li>
-      </Link>
-      <Link to="/dashboard/review">
-        <li className="sidebar_link">
-          <FontAwesomeIcon icon={faCommentAlt} />
-          Review
-        </li>
-      </Link>
+      {!mainAdmin && (
+        <>
+          {" "}
+          <Link to="/dashboard/orders">
+            <li className="sidebar_link">
+              <FontAwesomeIcon icon={faCar} />
+              Orders List
+            </li>
+          </Link>
+          <Link to="/dashboard/review">
+            <li className="sidebar_link">
+              <FontAwesomeIcon icon={faCommentAlt} />
+              Review
+            </li>
+          </Link>{" "}
+        </>
+      )}
       {mainAdmin && (
         <>
           {" "}
@@ -61,6 +66,12 @@ const Sidebar = () => {
             <li className="sidebar_link">
               <FontAwesomeIcon icon={faThList} />
               All Orders
+            </li>
+          </Link>
+          <Link to="/dashboard/manageServices">
+            <li className="sidebar_link">
+              <FontAwesomeIcon icon={faThList} />
+              Manage Services
             </li>
           </Link>{" "}
         </>
