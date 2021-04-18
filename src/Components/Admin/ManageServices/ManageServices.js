@@ -10,13 +10,13 @@ const ManageServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://cryptic-retreat-15947.herokuapp.com/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/delete/${id}`, {
+    fetch(`https://cryptic-retreat-15947.herokuapp.com/delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

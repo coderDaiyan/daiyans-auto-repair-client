@@ -23,7 +23,7 @@ const Login = () => {
   const [admins, setAdmins] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/admins")
+    fetch("https://cryptic-retreat-15947.herokuapp.com/admins")
       .then((res) => res.json())
       .then((admin) => setAdmins(admin));
   }, []);

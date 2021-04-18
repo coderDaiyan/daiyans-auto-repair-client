@@ -16,7 +16,7 @@ const Order = () => {
   let { id } = useParams();
 
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://cryptic-retreat-15947.herokuapp.com/services")
       .then((res) => res.json())
       .then((data) => setService(data));
   }, []);
@@ -41,7 +41,7 @@ const Order = () => {
       status: "pending",
     };
 
-    fetch("http://localhost:5000/placeOrder", {
+    fetch("https://cryptic-retreat-15947.herokuapp.com/placeOrder", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderDetails),
