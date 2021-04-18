@@ -52,7 +52,11 @@ const Navbar = () => {
                 <Link
                   style={{ color: "white" }}
                   className="nav-link"
-                  to="/dashboard"
+                  to={
+                    loggedInUser.isAdmin
+                      ? `/dashboard/allOrders`
+                      : `/dashboard/orders`
+                  }
                 >
                   Dashboard
                 </Link>

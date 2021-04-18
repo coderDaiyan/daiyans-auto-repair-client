@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
 import PreLoader from "../../../assets/preloader.gif";
-import DashboardHeader from "../../Dashboard/DashboardHeader/DashboardHeader";
+import Dashboard from "../../Dashboard/Dashboard/Dashboard";
 import Sidebar from "../../Dashboard/Sidebar/Sidebar";
 
 const ManageServices = () => {
@@ -32,13 +32,9 @@ const ManageServices = () => {
   };
   return (
     <section className="dashboard row">
-      <div className="header col-12">
-        <DashboardHeader />
-      </div>
+      <Dashboard />
       <div className="d-flex">
-        <div className="sidebar col-md-3">
-          <Sidebar />
-        </div>
+        <Sidebar />
         <div className="main_content col-md-9">
           <div className="main_content col-md-9 orders_table">
             <table className="table table-borderless">

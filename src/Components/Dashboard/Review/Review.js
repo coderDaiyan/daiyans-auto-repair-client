@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import { UserContext } from "../../../App";
-import DashboardHeader from "../DashboardHeader/DashboardHeader";
+import Dashboard from "../Dashboard/Dashboard";
 import Sidebar from "../Sidebar/Sidebar";
 
 const Review = () => {
@@ -58,13 +58,9 @@ const Review = () => {
 
   return (
     <section className="dashboard row">
-      <div className="header col-12">
-        <DashboardHeader />
-      </div>
+      <Dashboard />
       <div className="d-flex">
-        <div className="sidebar col-md-3">
-          <Sidebar />
-        </div>
+        <Sidebar />
         <div className="main_content form col-md-9">
           <form onSubmit={handleSubmit(onSubmit)} className="row g-3">
             <div class="col-md-6">

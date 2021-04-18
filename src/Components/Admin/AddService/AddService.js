@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
-import DashboardHeader from "../../Dashboard/DashboardHeader/DashboardHeader";
+import Dashboard from "../../Dashboard/Dashboard/Dashboard";
 import Sidebar from "../../Dashboard/Sidebar/Sidebar";
 
 const AddService = () => {
@@ -53,13 +53,9 @@ const AddService = () => {
   return (
     <>
       <section className="dashboard row">
-        <div className="header col-12">
-          <DashboardHeader />
-        </div>
+        <Dashboard />
         <div className="d-flex">
-          <div className="sidebar col-md-3">
-            <Sidebar />
-          </div>
+          <Sidebar />
           <div className="main_content col-md-9">
             <div className="form">
               <form onSubmit={handleSubmit(onSubmit)} className="row g-3">

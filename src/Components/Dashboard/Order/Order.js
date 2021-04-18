@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
 import swal from "sweetalert";
 import { UserContext } from "../../../App";
-import DashboardHeader from "../DashboardHeader/DashboardHeader";
+import Dashboard from "../Dashboard/Dashboard";
 import ProcessPayment from "../Payment/ProcessPayment/ProcessPayment";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Order.css";
@@ -56,13 +56,9 @@ const Order = () => {
 
   return (
     <section className="dashboard row">
-      <div className="header col-12">
-        <DashboardHeader />
-      </div>
+      <Dashboard />
       <div className="d-flex">
-        <div className="sidebar col-md-3">
-          <Sidebar />
-        </div>
+        <Sidebar />
         <div className="main_content col-md-9">
           <div className="row form">
             <form

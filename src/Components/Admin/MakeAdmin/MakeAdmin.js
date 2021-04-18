@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
-import DashboardHeader from "../../Dashboard/DashboardHeader/DashboardHeader";
+import Dashboard from "../../Dashboard/Dashboard/Dashboard";
 import Sidebar from "../../Dashboard/Sidebar/Sidebar";
 
 const MakeAdmin = () => {
@@ -26,13 +26,9 @@ const MakeAdmin = () => {
   };
   return (
     <section className="dashboard row">
-      <div className="header col-12">
-        <DashboardHeader />
-      </div>
+      <Dashboard />
       <div className="d-flex">
-        <div className="sidebar col-md-3">
-          <Sidebar />
-        </div>
+        <Sidebar />
         <div className="main_content col-md-9">
           <h1 className="p-3 mb-5">Make Admin</h1>
           <form onSubmit={handleSubmit(onSubmit)}>

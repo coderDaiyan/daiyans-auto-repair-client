@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
 import PreLoader from "../../../assets/preloader.gif";
-import DashboardHeader from "../../Dashboard/DashboardHeader/DashboardHeader";
+import Dashboard from "../../Dashboard/Dashboard/Dashboard";
 import Sidebar from "../../Dashboard/Sidebar/Sidebar";
 import "./AllOrders.css";
 
@@ -9,18 +9,18 @@ const AllOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("https://cryptic-retreat-15947.herokuapp.com/allOrders")
+    fetch("http://localhost:5000/allOrders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
 
   const changeStatus = (id, e) => {
     const value = e.target.value;
-    fetch(`https://cryptic-retreat-15947.herokuapp.com/specificOrder/${id}`)
+    fetch(`http://localhost:5000/specificOrder/${id}`)
       .then((res) => res.json())
       .then((result) => {
         if (result) {
-          fetch("https://cryptic-retreat-15947.herokuapp.com/updateStatus", {
+          fetch("http://localhost:5000/updateStatus", {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ id, status: value }),
@@ -36,13 +36,9 @@ const AllOrders = () => {
   };
   return (
     <section className="dashboard row">
-      <div className="header col-12">
-        <DashboardHeader />
-      </div>
+      <Dashboard />
       <div className="d-flex">
-        <div className="sidebar col-md-3">
-          <Sidebar />
-        </div>
+        <Sidebar />
         <div className="main_content col-md-9 orders_table">
           <table className="table table-borderless">
             <thead>

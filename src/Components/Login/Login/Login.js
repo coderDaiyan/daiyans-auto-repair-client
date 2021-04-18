@@ -20,7 +20,7 @@ const Login = () => {
     from: { pathname: `/` },
   };
 
-  const [admins, setAdmins] = useState({});
+  const [admins, setAdmins] = useState([]);
 
   useEffect(() => {
     fetch("https://cryptic-retreat-15947.herokuapp.com/admins")
