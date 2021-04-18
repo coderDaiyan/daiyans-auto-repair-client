@@ -24,13 +24,6 @@ const Works = () => {
               dolor sit amet consectetur adipisicing elit. Cumque, qui! Lorem,
               ipsum dolor sit amet consectetur adipisicing elit.
             </p>
-            <br />
-            <button
-              style={{ background: "var(--gradient-color)", color: "white" }}
-              className="btn btn-lg learn-more-btn"
-            >
-              Learn More
-            </button>
           </div>
         </div>
       </div>
