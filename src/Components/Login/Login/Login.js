@@ -34,19 +34,6 @@ const Login = () => {
     email: "",
   });
   const [newUser, setNewUser] = useState(false);
-
-  const setUserToken = () => {
-    firebase
-      .auth()
-      .currentUser.getIdToken(/* forceRefresh */ true)
-      .then(function (idToken) {
-        // Send token to your backend via HTTPS
-        sessionStorage.setItem("token", idToken);
-      })
-      .catch(function (error) {
-        // Handle error
-      });
-  };
   const [signedInUser, setSignedInUser] = useState({
     name: "",
     email: "",

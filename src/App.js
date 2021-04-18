@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import AddService from "./Components/Admin/AddService/AddService";
+import AdminRoute from "./Components/Admin/AdminRoute/AdminRoute";
 import AllOrders from "./Components/Admin/AllOrders/AllOrders";
 import MakeAdmin from "./Components/Admin/MakeAdmin/MakeAdmin";
 import ManageServices from "./Components/Admin/ManageServices/ManageServices";
@@ -22,18 +23,18 @@ function App() {
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <Switch>
-          <PrivateRoute path="/dashboard/manageServices">
+          <AdminRoute path="/dashboard/manageServices">
             <ManageServices />
-          </PrivateRoute>
-          <PrivateRoute path="/dashboard/addService">
+          </AdminRoute>
+          <AdminRoute path="/dashboard/addService">
             <AddService />
-          </PrivateRoute>
-          <PrivateRoute path="/dashboard/allOrders">
+          </AdminRoute>
+          <AdminRoute path="/dashboard/allOrders">
             <AllOrders />
-          </PrivateRoute>
-          <PrivateRoute path="/dashboard/makeAdmin">
+          </AdminRoute>
+          <AdminRoute path="/dashboard/makeAdmin">
             <MakeAdmin />
-          </PrivateRoute>
+          </AdminRoute>
           <PrivateRoute path="/dashboard/review">
             <Review />
           </PrivateRoute>

@@ -6,6 +6,7 @@ import "./ServiceCard.css";
 const ServiceCard = ({ service }) => {
   const { icon, title, description } = service;
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  console.log(loggedInUser.isAdmin);
 
   const handleClick = () => {
     localStorage.setItem("serviceId", service._id);
