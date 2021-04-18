@@ -48,19 +48,6 @@ const Navbar = () => {
                   Our Team
                 </Link>
               </li>
-              <li className="nav-item me-5">
-                <Link
-                  style={{ color: "white" }}
-                  className="nav-link"
-                  to={
-                    loggedInUser.isAdmin
-                      ? `/dashboard/allOrders`
-                      : `/dashboard/orders`
-                  }
-                >
-                  Dashboard
-                </Link>
-              </li>
 
               {loggedInUser.email ? (
                 <li className="nav-item me-5 mt-2">
