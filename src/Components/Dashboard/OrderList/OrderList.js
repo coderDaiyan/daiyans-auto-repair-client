@@ -27,9 +27,18 @@ const OrderList = () => {
           <div className="row">
             {orders.map((order) => (
               <div className="col-md-4 orders">
-                <h3>{order.service}</h3>
+                <h3>{order?.orderData?.service}</h3>
                 <h5>Name: {order.name}</h5>
-                <div class="alert alert-warning mt-4" role="alert">
+                <div
+                  className={`alert ${
+                    order.status === "Rejected"
+                      ? "alert-danger"
+                      : order.status === "Done"
+                      ? "alert-success"
+                      : "alert-warning"
+                  } mt-4`}
+                  role="alert"
+                >
                   {order.status}
                 </div>
               </div>
