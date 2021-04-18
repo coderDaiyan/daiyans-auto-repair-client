@@ -9,18 +9,18 @@ const AllOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allOrders")
+    fetch("https://cryptic-retreat-15947.herokuapp.com/allOrders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
 
   const changeStatus = (id, e) => {
     const value = e.target.value;
-    fetch(`http://localhost:5000/specificOrder/${id}`)
+    fetch(`https://cryptic-retreat-15947.herokuapp.com/specificOrder/${id}`)
       .then((res) => res.json())
       .then((result) => {
         if (result) {
-          fetch("http://localhost:5000/updateStatus", {
+          fetch("https://cryptic-retreat-15947.herokuapp.com/updateStatus", {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ id, status: value }),
