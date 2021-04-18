@@ -45,7 +45,10 @@ const Review = () => {
     };
     fetch("https://cryptic-retreat-15947.herokuapp.com/addReview", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
       body: JSON.stringify(reviewData),
     })
       .then((res) => res.json())

@@ -1,0 +1,7 @@
+.blog__card {
+  width: 300px;
+  height: 370px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 3px 7px 22px 3px rgba(179, 175, 179, 0.7);
+}
