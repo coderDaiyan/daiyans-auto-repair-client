@@ -23,16 +23,13 @@
 
 ## Features in this Project
 
-- In the Home Page there are some services which are loaded from
-  **Backend API**
-- If any User Clicks on the service, There is an authentication system user is logged in or not. If logged in, User can go to order page
-- There is a Dashboard page where if user can see if he ordered any product in past he can see the orders they ordered in past, and user can give a review also which will display in home page
-- There is a another page for admin. If he is admin he will see below options
-
-  - Manage Services
-  - Add Service
-  - All Orders
-  - Make Admin
+- On the Home Page, there are some services are loaded from the **Backend API**.
+- If any User Clicks on the service, there is an authentication system user is logged in or not. If logged in, the user can go to the order page and he can order with the payment system via Stripe.
+- User can see his all orders.
+- User can give a review.
+- Admin can add service.
+- Admin can manage services.
+- Admin can make anyone admin with email address
 
 ## Sever Side Repo Link
 
