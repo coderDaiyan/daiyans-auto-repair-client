@@ -6,6 +6,8 @@
 
 <br>
 
+[Live Site](https://daiyans-auto-repair.web.app/)
+
 ## Technologies used on this Project
 
 - JavaScript (ES6)
