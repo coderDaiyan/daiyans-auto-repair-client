@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PreLoader from "../../../assets/preloader.gif";
 import ServiceCard from "../ServiceCard/ServiceCard";
 
-const Services = () => {
-  const [services, setServices] = useState([]);
+const Services = ({ services }) => {
+  // const [services, setServices] = useState([]);
 
-  useEffect(() => {
-    fetch("https://cryptic-retreat-15947.herokuapp.com/services")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://cryptic-retreat-15947.herokuapp.com/services")
+  //     .then((res) => res.json())
+  //     .then((data) => setServices(data));
+  // }, []);
 
   return (
     <section className="mt-5 container-fluid">

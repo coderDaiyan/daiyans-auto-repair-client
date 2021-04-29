@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.scss";
 import PreLoader from "../../../assets/preloader.gif";
 import TestimonialCard from "../TestimonialCard/TestimonialCard";
 import "./Testimonial.css";
@@ -16,12 +18,23 @@ const Testimonial = () => {
     <section className="testimonial_section mt-5 container">
       <h1 className="fw-bold text-center mb-5">Testimonials</h1>
       {testimonials.length !== 0 ? (
-        <div className="row d-flex justify-content-center align-items-center">
-          <div className="row justify-content-center">
+        <div className="">
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={2}
+            navigation
+            centeredSlides
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+          >
             {testimonials.map((testimonial) => (
-              <TestimonialCard testimonial={testimonial} />
+              <>
+                <SwiperSlide>
+                  <TestimonialCard testimonial={testimonial} />
+                </SwiperSlide>
+              </>
             ))}
-          </div>
+          </Swiper>
         </div>
       ) : (
         <div className="mt-4 d-flex justify-content-center align-items-center">

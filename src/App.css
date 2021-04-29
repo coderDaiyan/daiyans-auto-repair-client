@@ -3,6 +3,7 @@
 }
 ::-webkit-scrollbar {
   background: #072f4f;
+  width: 12px;
 }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #9691ff, #1aa8ff);

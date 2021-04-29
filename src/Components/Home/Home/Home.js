@@ -7,11 +7,11 @@ import Header from "../Header/Header";
 import Services from "../Services/Services";
 import Testimonial from "../Testimonial/Testimonial";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <>
       <Header />
-      <Services />
+      <Services services={props.services} />
       <Testimonial />
       <About />
       <Blogs />

@@ -1,0 +1,8 @@
+.preloader_container {
+  width: 100vw;
+  height: 100vh;
+  background: #21242d;
+}
+.preloader_container div img {
+  height: 100vh;
+}

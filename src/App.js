@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import AddService from "./Components/Admin/AddService/AddService";
@@ -14,11 +14,21 @@ import Home from "./Components/Home/Home/Home";
 import Login from "./Components/Login/Login/Login";
 import PrivateRoute from "./Components/Login/PrivateRoute/PrivateRoute";
 import NotFound from "./Components/NotFound/NotFound";
+import Preloader from "./Components/Preloader/Preloader";
 
 export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    fetch("https://cryptic-retreat-15947.herokuapp.com/services")
+      .then((res) => res.json())
+      .then((data) => setServices(data));
+  }, []);
+
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
@@ -51,7 +61,7 @@ function App() {
             <Dashboard />
           </PrivateRoute>
           <Route exact path="/">
-            <Home />
+            {services.length > 0 ? <Home services={services} /> : <Preloader />}
           </Route>
           <Route path="*">
             <NotFound />
