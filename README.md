@@ -33,4 +33,4 @@
 
 ## Sever Side Repo Link
 
-[Sever Side Repo](https://github.com/Porgramming-Hero-web-course/complete-website-server-coderDaiyan)
+[Sever Side Repo](https://github.com/coderDaiyan/daiyans-auto-repair-server)
