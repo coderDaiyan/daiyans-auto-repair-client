@@ -1,4 +1,4 @@
-# Daiyans's Auto Repair Client Side Repository
+# Daiyan's Auto Repair Client Side Repository
 
 ### This is the client side code of Daiyan's Auto Repair Project.You'll find the
 
