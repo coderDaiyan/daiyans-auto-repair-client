@@ -3,7 +3,7 @@ import "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../../../App";
-import { firebaseConfig } from "../../../firebase.config";
+import { firebaseConfig } from "../../../firebase";
 import "./Login.css";
 
 if (!firebase.apps.length) {

@@ -17,7 +17,7 @@ const Review = () => {
     formState: { errors },
   } = useForm();
 
-  const [imageURL, setImageURL] = useState(null);
+  const [imageURL, setImageURL] = useState("");
   const handleUploadFile = (e) => {
     const image = e.target.files[0];
     const imageData = new FormData();
@@ -26,9 +26,9 @@ const Review = () => {
 
     axios
       .post("https://api.imgbb.com/1/upload", imageData)
-      .then(function (response) {
-        console.log(response.data.data.display_url);
-        setImageURL(response.data.data.display_url);
+      .then(function (res) {
+        setImageURL(res.data.data.display_url);
+        // return res.data.data.display_url;
       })
       .catch(function (error) {
         console.log(error);
@@ -43,20 +43,22 @@ const Review = () => {
       review: description,
       img: imageURL,
     };
-    fetch("https://me-auto-repair.onrender.com/addReview", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify(reviewData),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result && imageURL) {
-          swal("YAY!", "Review Added!", "success");
-        }
-      });
+    if (imageURL !== "") {
+      fetch("https://me-auto-repair.onrender.com/addTestimonial", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(reviewData),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result && imageURL) {
+            swal("YAY!", "Review Added!", "success");
+          }
+        });
+    }
   };
 
   return (
