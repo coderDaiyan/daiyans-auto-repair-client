@@ -9,18 +9,18 @@ const AllOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("https://cryptic-retreat-15947.herokuapp.com/allOrders")
+    fetch("https://me-auto-repair.onrender.com/allOrders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
 
   const changeStatus = (id, e) => {
     const value = e.target.value;
-    fetch(`https://cryptic-retreat-15947.herokuapp.com/specificOrder/${id}`)
+    fetch(`https://me-auto-repair.onrender.com/specificOrder/${id}`)
       .then((res) => res.json())
       .then((result) => {
         if (result) {
-          fetch("https://cryptic-retreat-15947.herokuapp.com/updateStatus", {
+          fetch("https://me-auto-repair.onrender.com/updateStatus", {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ id, status: value }),

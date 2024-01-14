@@ -16,7 +16,7 @@ const Order = () => {
   let { id } = useParams();
 
   useEffect(() => {
-    fetch("https://cryptic-retreat-15947.herokuapp.com/services")
+    fetch("https://me-auto-repair.onrender.com/services")
       .then((res) => res.json())
       .then((data) => setService(data));
   }, []);
@@ -41,7 +41,7 @@ const Order = () => {
       status: "pending",
     };
 
-    fetch("https://cryptic-retreat-15947.herokuapp.com/placeOrder", {
+    fetch("https://me-auto-repair.onrender.com/placeOrder", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderDetails),

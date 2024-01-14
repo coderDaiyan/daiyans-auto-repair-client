@@ -43,7 +43,7 @@ const Review = () => {
       review: description,
       img: imageURL,
     };
-    fetch("https://cryptic-retreat-15947.herokuapp.com/addReview", {
+    fetch("https://me-auto-repair.onrender.com/addReview", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

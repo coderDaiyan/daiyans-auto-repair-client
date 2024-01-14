@@ -10,7 +10,7 @@ const OrderList = () => {
 
   useEffect(() => {
     fetch(
-      `https://cryptic-retreat-15947.herokuapp.com/orders?email=${loggedInUser?.email}`
+      `https://me-auto-repair.onrender.com/orders?email=${loggedInUser?.email}`
     )
       .then((res) => res.json())
       .then((data) => setOrders(data));

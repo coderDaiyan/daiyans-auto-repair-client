@@ -11,7 +11,7 @@ const MakeAdmin = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data, e) => {
-    fetch("https://cryptic-retreat-15947.herokuapp.com/makeAdmin", {
+    fetch("https://me-auto-repair.onrender.com/makeAdmin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

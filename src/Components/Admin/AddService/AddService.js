@@ -38,7 +38,7 @@ const AddService = () => {
       description: serviceDescription,
       icon: imageUrl,
     };
-    fetch("https://cryptic-retreat-15947.herokuapp.com/addService", {
+    fetch("https://me-auto-repair.onrender.com/addService", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(serviceData),
