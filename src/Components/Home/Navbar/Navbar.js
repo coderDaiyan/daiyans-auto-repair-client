@@ -27,7 +27,7 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex">
               <li className="nav-item me-5">
                 <Link
                   style={{ color: "white" }}
@@ -50,17 +50,23 @@ const Navbar = () => {
               </li>
 
               {loggedInUser.email ? (
-                <li className="nav-item me-5 mt-2">
-                  <h5 className="text-white">Hello, {loggedInUser.name}</h5>
+                <li className="nav-item me-5 ">
+                  <Link
+                    style={{ color: "white" }}
+                    className="nav-link btn text-white"
+                    onClick={() => setLoggedInUser({})}
+                  >
+                    Logout
+                  </Link>
                 </li>
               ) : (
                 <li className="nav-item me-5">
                   <Link
                     style={{ color: "white" }}
-                    className="nav-link"
+                    className="nav-link btn text-white"
                     to="/login"
                   >
-                    <button className="btn text-white">Login</button>
+                    Login
                   </Link>
                 </li>
               )}
