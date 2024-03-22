@@ -101,6 +101,7 @@ const Order = () => {
                   name="service"
                   id="service"
                   placeholder={selectedService?.title}
+                  defaultValue={selectedService?.title}
                   required
                   {...register("service")}
                 />
